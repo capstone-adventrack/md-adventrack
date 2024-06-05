@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.carousel.MaskableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="8dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:shapeAppearance="?attr/shapeAppearanceCornerLarge">
+
+    <ImageView
+        android:id="@+id/iv_carousel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_thumbnail" />
+
+    <TextView
+        android:id="@+id/tv_headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextContent.Heading.XLarge"
+        android:textColor="@android:color/white"
+        tools:text="Nusa Penida" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginBottom="@dimen/margin_64dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextContent.Heading.XXSmall"
+        android:textColor="@android:color/white"
+        app:drawableStartCompat="@drawable/ic_location"
+        app:drawableTint="@color/white"
+        tools:text="Bali" />
+
+</com.google.android.material.carousel.MaskableFrameLayout>
