@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Adventrack</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_hint">Where do you want to go?</string>
+    <string name="category_text">Category</string>
+    <string name="tv_example_city">Contoh Kota</string>
 </resources>

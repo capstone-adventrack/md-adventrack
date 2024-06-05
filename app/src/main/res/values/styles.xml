@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/plusjakartasans_regular</item>
+    </style>
+
+    <style name="TextContent.Heading">
+        <item name="fontFamily">@font/plusjakartasans_bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="TextContent.Heading.Mega">
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="TextContent.Heading.XLarge">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="TextContent.Heading.Large">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextContent.Heading.Medium">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="TextContent.Heading.Small">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextContent.Heading.XXSmall">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextContent.Paragraph">
+        <item name="fontFamily">@font/plusjakartasans_light</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <style name="TextContent.Paragraph.Large">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextContent.Paragraph.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextContent.Paragraph.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextContent.Paragraph.XSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextContent.Label">
+        <item name="fontFamily">@font/plusjakartasans_medium</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <style name="TextContent.Label.Large">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextContent.Label.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextContent.Label.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextContent.Label.XSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading">
+        <item name="fontFamily">@font/plusjakartasans_bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="TextContent.SubHeading.XXLarge">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading.XLarge">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading.Large">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextContent.SubHeading.XSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+</resources>
