@@ -5,4 +5,19 @@
     <string name="search_hint">Where do you want to go?</string>
     <string name="category_text">Category</string>
     <string name="tv_example_city">Contoh Kota</string>
+    <string name="label_home">Home</string>
+    <string name="label_search">Search</string>
+    <string name="label_orders">Orders</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_good_day">Good day</string>
+    <string name="label_username">Username</string>
+    <string name="label_location">Location</string>
+    <string name="title_nearby_places">Nearby Places</string>
+    <string name="label_price">Price</string>
+    <string name="label_date">Date</string>
+    <string name="label_duration">Duration</string>
+    <string name="empty_order">Oops, your order is still empty!</string>
+    <string name="label_order_now">Order Now</string>
+    <string name="title_order">Your Order</string>
+    <string name="label_filter">Filter</string>
 </resources>
