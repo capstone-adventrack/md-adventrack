@@ -33,6 +33,10 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="TextContent.Heading.XSmall">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="TextContent.Heading.XXSmall">
         <item name="android:textSize">16sp</item>
     </style>
