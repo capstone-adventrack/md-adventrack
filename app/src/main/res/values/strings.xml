@@ -20,4 +20,11 @@
     <string name="label_order_now">Order Now</string>
     <string name="title_order">Your Order</string>
     <string name="label_filter">Filter</string>
+    <string name="label_items_purchased">Items Purchased</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_payment_method">Payment Method</string>
+    <string name="label_choose_a_payment_method">Choose a Payment Method</string>
+    <string name="label_dummypay">DummyPay</string>
+    <string name="label_total_price">Total Price</string>
+    <string name="label_pay">Pay</string>
 </resources>

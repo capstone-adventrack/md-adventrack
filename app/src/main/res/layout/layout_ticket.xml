@@ -7,8 +7,8 @@
     android:layout_marginHorizontal="@dimen/margin_16dp"
     android:layout_marginTop="@dimen/margin_16dp"
     android:layout_marginBottom="@dimen/margin_16dp"
-    app:cardCornerRadius="@dimen/corner_16dp"
     app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/corner_16dp"
     app:cardElevation="0dp"
     app:strokeColor="#FFF4F4F4"
     app:strokeWidth="1dp">
@@ -19,25 +19,35 @@
         android:paddingHorizontal="@dimen/padding_24dp"
         android:paddingVertical="@dimen/padding_20dp">
 
+        <ImageView
+            android:id="@+id/iv_ticket"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
+            android:src="@drawable/ic_ticket"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_label_items_purchased"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_items_purchased" />
+
+        <TextView
+            android:id="@+id/tv_label_items_purchased"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12dp"
+            android:text="@string/label_items_purchased"
+            android:textAppearance="@style/TextContent.Heading.XSmall"
+            app:layout_constraintStart_toEndOf="@id/iv_ticket"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextContent.Heading.XXSmall"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:textAppearance="@style/TextContent.SubHeading.Small"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_items_purchased"
             tools:text="Snorkeling Raja Ampat" />
-
-        <TextView
-            android:id="@+id/tv_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextContent.SubHeading.XSmall"
-            android:textColor="#FF46CE14"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_title"
-            tools:text="PAID" />
 
         <TextView
             android:id="@+id/tv_location"
@@ -122,13 +132,44 @@
             app:layout_constraintTop_toTopOf="@id/ic_date" />
 
         <ImageView
+            android:id="@+id/ic_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:src="@drawable/ic_shopping_bag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ic_date" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextContent.SubHeading.XSmall"
+            app:layout_constraintBottom_toBottomOf="@id/ic_quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ic_quantity"
+            tools:text="4 People" />
+
+        <TextView
+            android:id="@+id/tv_label_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:text="@string/label_quantity"
+            android:textAppearance="@style/TextContent.Label.XSmall"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_quantity"
+            app:layout_constraintStart_toEndOf="@id/ic_quantity"
+            app:layout_constraintTop_toTopOf="@id/ic_quantity" />
+
+        <ImageView
             android:id="@+id/ic_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_12dp"
             android:src="@drawable/ic_clock"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ic_date" />
+            app:layout_constraintTop_toBottomOf="@id/ic_quantity" />
 
         <TextView
             android:id="@+id/tv_duration"

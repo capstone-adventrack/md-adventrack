@@ -206,4 +206,5 @@
     <dimen name="elevation_8dp">8dp</dimen>
     <dimen name="width_182dp">182dp</dimen>
     <dimen name="height_250dp">250dp</dimen>
+    <dimen name="corner_30dp">30dp</dimen>
 </resources>
