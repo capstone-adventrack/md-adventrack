@@ -27,4 +27,12 @@
     <string name="label_dummypay">DummyPay</string>
     <string name="label_total_price">Total Price</string>
     <string name="label_pay">Pay</string>
+    <string name="don_t_have_account_yet">Don\'t have account yet?</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome!</string>
+    <string name="please_log_in_to_get_started">Please log in to get started!</string>
+    <string name="register">Register</string>
+    <string name="forget_password">Forget Password?</string>
 </resources>
