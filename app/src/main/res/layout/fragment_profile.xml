@@ -1,14 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <ImageView
+                android:id="@+id/iv_bg_profile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="@dimen/size_0dp"
+                android:layout_height="@dimen/size_200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_profile"/>
 
-</FrameLayout>
+<!--            cardview untuk menampilkan foto profil-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile"
+                android:layout_width="@dimen/width_380dp"
+                android:layout_gravity="center"
+                app:cardElevation="22.6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_bg_profile"
+                app:layout_constraintBottom_toBottomOf="@id/iv_bg_profile"
+                app:cardCornerRadius="@dimen/corner_8dp"
+                android:elevation="@dimen/elevation_8dp"
+                android:layout_height="@dimen/height_88dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:paddingHorizontal="@dimen/padding_12dp"
+                android:paddingVertical="@dimen/padding_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="@dimen/width_64dp"
+                    android:layout_height="@dimen/height_64dp"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                    android:scaleType="centerCrop"
+                    app:strokeWidth="1dp"
+                    tools:src="@tools:sample/avatars"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_title_name"
+                    style="@style/TextContent.Heading.Small"
+                    android:text="contoh title"
+                    android:layout_marginStart="@dimen/margin_12dp"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_subtitle_email"
+                    style="@style/TextContent.Label.XSmall"
+                    android:text="contoh subtitle"
+                    android:layout_marginStart="@dimen/margin_12dp"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_name" />
+
+                <ImageButton
+                    android:id="@+id/btn_edit_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_edit"
+                    android:layout_width="@dimen/width_20dp"
+                    android:layout_height="@dimen/height_20dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_semua_order"
+                android:paddingVertical="@dimen/padding_20dp"
+                android:paddingHorizontal="@dimen/padding_16dp"
+                android:layout_marginTop="@dimen/margin_24dp"
+                android:drawableStart="@drawable/ic_order"
+                app:layout_constraintTop_toBottomOf="@id/cv_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/padding_16dp"
+                style="@style/TextContent.SubHeading.Small"
+                android:text="All Orders"
+                android:textAllCaps="false"
+                android:gravity="start|center_horizontal"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:background="@drawable/bg_button_item_profile_top"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_favorite"
+                android:paddingVertical="@dimen/padding_20dp"
+                android:paddingHorizontal="@dimen/padding_16dp"
+                android:drawableStart="@drawable/ic_favorite"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextContent.SubHeading.Small"
+                android:text="All Orders"
+                android:drawablePadding="@dimen/padding_16dp"
+                android:textAllCaps="false"
+                android:gravity="start|center_horizontal"
+                android:background="@drawable/bg_button_item_profile_body"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_semua_order" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_language"
+                android:paddingVertical="@dimen/padding_20dp"
+                android:paddingHorizontal="@dimen/padding_16dp"
+                android:drawableStart="@drawable/ic_language"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextContent.SubHeading.Small"
+                android:minHeight="0dp"
+                android:text="Language"
+                android:drawablePadding="@dimen/padding_16dp"
+                android:textAllCaps="false"
+                android:gravity="start"
+                android:background="@drawable/bg_button_item_profile_body"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_favorite" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_help"
+                android:drawableStart="@drawable/ic_help"
+                android:paddingVertical="@dimen/padding_20dp"
+                android:paddingHorizontal="@dimen/padding_16dp"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextContent.SubHeading.Small"
+                android:text="Help"
+                android:drawablePadding="@dimen/padding_16dp"
+                android:textAllCaps="false"
+                android:gravity="start|center_horizontal"
+                android:background="@drawable/bg_button_item_profile_bottom"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_language" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ButtonGeneral.WarningVariant"
+                android:layout_marginHorizontal="@dimen/margin_16dp"
+                android:layout_marginVertical="@dimen/margin_24dp"
+                android:textAppearance="@style/TextContent.SubHeading.Medium"
+                android:text="Log Out"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
