@@ -4,4 +4,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_stroke">#E9E9E9</color>
     <color name="warning">#E71735</color>
+    <color name="ligthGray">#F4F6F7</color>
+    <color name="textColorSecondary">#5C707E</color>
+
+<!--    Light-->
+    <color name="light50">#f4f6f7</color>
+    <color name="light100">#e3e8ea</color>
+    <color name="light200">#cad2d7</color>
+    <color name="light300">#a4b2bc</color>
+    <color name="light400">#788b98</color>
+    <color name="light500">#5c707e</color>
+    <color name="light600">#4f5d6b</color>
+    <color name="light700">#455059</color>
+    <color name="light800">#3d454d</color>
+    <color name="light900">#363b43</color>
+    <color name="light950">#1f2328</color>
 </resources>
