@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".OrderFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -59,13 +60,13 @@
 
                 <include
                     android:id="@+id/layout_empty_order"
-                    android:visibility="gone"
                     layout="@layout/layout_empty_order"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_filter"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/rv_filter" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

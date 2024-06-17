@@ -20,4 +20,6 @@
     <string name="label_order_now">Order Now</string>
     <string name="title_order">Your Order</string>
     <string name="label_filter">Filter</string>
+    <string name="label_items_purchased">Items Purchased</string>
+    <string name="label_quantity">Quantity</string>
 </resources>
