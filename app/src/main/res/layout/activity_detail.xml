@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".features.detail.DetailActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_detail"
@@ -191,7 +191,7 @@
                         android:name="com.google.android.gms.maps.SupportMapFragment"
                         app:cameraZoom="12"
                         app:liteMode="true"
-                        tools:context=".DetailActivity" />
+                        tools:context=".features.detail.DetailActivity" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

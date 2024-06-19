@@ -1,4 +1,4 @@
-package com.example.adventrack
+package com.example.adventrack.features
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,8 +7,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.adventrack.R
 import com.example.adventrack.databinding.ActivityHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

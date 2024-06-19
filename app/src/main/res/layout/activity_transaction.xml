@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF1F0F5"
-    tools:context=".TransactionActivity">
+    tools:context=".features.transaction.TransactionActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_transaction"

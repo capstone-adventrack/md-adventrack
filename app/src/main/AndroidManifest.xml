@@ -13,19 +13,19 @@
         android:theme="@style/Theme.Adventrack"
         tools:targetApi="31">
         <activity
-            android:name=".DetailActivity"
+            android:name=".features.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".features.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".features.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".TransactionActivity"
+            android:name=".features.transaction.TransactionActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".features.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
