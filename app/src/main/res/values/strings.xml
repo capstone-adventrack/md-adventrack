@@ -40,4 +40,5 @@
     <string name="desc_duration">Valid for 7 days from the date of purchase</string>
     <string name="label_0">0</string>
     <string name="label_activity_ticket">Activity Ticket</string>
+    <string name="desc_error">Oops, your credentials are wrong, try again</string>
 </resources>

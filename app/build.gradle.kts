@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleDaggerHilt)
+    alias(libs.plugins.googleDevtoolsKsp)
 }
 
 android {
@@ -55,14 +57,26 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation (libs.androidx.swiperefreshlayout)
+
     //networking
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.okhttp)
-    implementation(libs.glide)
+
+    // coroutine
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 
     //lifecycle
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
+
+    // dagger hilt
+    implementation(libs.hilt.android)
+    ksp(libs.dagger.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
 }
