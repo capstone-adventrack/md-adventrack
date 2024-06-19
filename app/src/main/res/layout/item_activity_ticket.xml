@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_24dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/corner_16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#FFF4F4F4"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/padding_24dp"
+        android:paddingVertical="@dimen/padding_20dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextContent.Heading.XXSmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Fire Dance Event Ticket" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:textAppearance="@style/TextContent.Label.XSmall"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_nearby_place"
+            app:layout_constraintEnd_toStartOf="@+id/iv_nearby_place"
+            app:layout_constraintStart_toStartOf="parent"
+            android:ellipsize="end"
+            android:maxLines="4"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="Watch the mesmerising Balinese fire dance under the setting sun." />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_nearby_place"
+            android:layout_width="@dimen/width_90dp"
+            android:layout_height="@dimen/height_102dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CornerLarge"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <View
+            android:id="@+id/dividerView"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@drawable/dotted_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ic_duration" />
+
+        <ImageView
+            android:id="@+id/ic_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            android:layout_marginTop="@dimen/margin_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_nearby_place" />
+
+        <TextView
+            android:id="@+id/tv_desc_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:text="@string/desc_duration"
+            android:textAppearance="@style/TextContent.Label.XSmall"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_duration"
+            app:layout_constraintStart_toEndOf="@id/ic_duration"
+            app:layout_constraintTop_toTopOf="@id/ic_duration" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:textAppearance="@style/TextContent.Label.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerView"
+            tools:text="IDR 450.000" />
+
+        <ImageButton
+            android:id="@+id/ib_minus_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_transaparent"
+            android:src="@drawable/ic_minus_cirlce"
+            android:layout_marginEnd="@dimen/margin_12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            app:layout_constraintEnd_toStartOf="@id/tv_quantity"
+            app:layout_constraintTop_toTopOf="@+id/tv_price" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_12dp"
+            android:text="@string/label_0"
+            android:textAppearance="@style/TextContent.SubHeading.XSmall"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            app:layout_constraintEnd_toStartOf="@id/ib_plus_item"
+            app:layout_constraintTop_toTopOf="@+id/tv_price" />
+
+        <ImageButton
+            android:id="@+id/ib_plus_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_transaparent"
+            android:src="@drawable/ic_add_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
