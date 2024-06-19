@@ -6,7 +6,7 @@ data class PlaceModel(
     val description: String,
     val latitude: Double,
     val longitude: Double,
-    val image: String,
+    val imageUrl: String,
     val openTime: String,
     val closeTime: String,
     val rating: Float,

@@ -55,4 +55,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation (libs.androidx.swiperefreshlayout)
+    //networking
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.glide)
+
+    //lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 }
