@@ -216,4 +216,7 @@
     <dimen name="width_182dp">182dp</dimen>
     <dimen name="height_250dp">250dp</dimen>
     <dimen name="corner_30dp">30dp</dimen>
+    <dimen name="height_102dp">102dp</dimen>
+    <dimen name="width_90dp">90dp</dimen>
+    <dimen name="height_220dp">220dp</dimen>
 </resources>
