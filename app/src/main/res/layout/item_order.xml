@@ -122,35 +122,35 @@
             app:layout_constraintTop_toTopOf="@id/ic_date" />
 
         <ImageView
-            android:id="@+id/ic_duration"
+            android:id="@+id/ic_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_12dp"
-            android:src="@drawable/ic_clock"
+            android:src="@drawable/ic_shopping_bag"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ic_date" />
 
         <TextView
-            android:id="@+id/tv_duration"
+            android:id="@+id/tv_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_8dp"
             android:textAppearance="@style/TextContent.SubHeading.XSmall"
-            app:layout_constraintBottom_toBottomOf="@id/ic_duration"
+            app:layout_constraintBottom_toBottomOf="@id/ic_quantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ic_duration"
-            tools:text="2 Hour" />
+            app:layout_constraintTop_toTopOf="@id/ic_quantity"
+            tools:text="4 Items" />
 
         <TextView
             android:id="@+id/tv_label_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_8dp"
-            android:text="@string/label_duration"
+            android:text="@string/label_quantity"
             android:textAppearance="@style/TextContent.Label.XSmall"
-            app:layout_constraintBottom_toBottomOf="@+id/ic_duration"
-            app:layout_constraintStart_toEndOf="@id/ic_duration"
-            app:layout_constraintTop_toTopOf="@id/ic_duration" />
+            app:layout_constraintBottom_toBottomOf="@+id/ic_quantity"
+            app:layout_constraintStart_toEndOf="@id/ic_quantity"
+            app:layout_constraintTop_toTopOf="@id/ic_quantity" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
