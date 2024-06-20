@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/primaryOrange</item>
+        <item name="colorSurface">@color/white</item>
         <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
     </style>
 
