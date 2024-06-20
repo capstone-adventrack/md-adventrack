@@ -2,12 +2,17 @@ package com.example.adventrack.features.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.adventrack.data.firebase.FirebaseClient
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val firebaseClient: FirebaseClient
 ): ViewModel(){
     private val _viewEffect = MutableSharedFlow<LoginViewEffect>()
     val viewEffect get() = _viewEffect.asSharedFlow()
@@ -24,6 +29,8 @@ class LoginViewModel(
             }
             is LoginViewEvent.GoogleSignIn -> {
 
+            }
+            is LoginViewEvent.NavigateToHome -> {
             }
         }
     }

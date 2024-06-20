@@ -53,4 +53,5 @@
     <string name="format_price_IDR">IDR %s</string>
     <string name="format_price_Rp">Rp %s</string>
     <string name="label_valid_duration">Valid for 7 days from the date of purchase</string>
+    <string name="title_recommended_places">Recommended Places</string>
 </resources>

@@ -28,12 +28,12 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/tv_title_most_visited_places"
+                    android:id="@+id/tv_title_recommended_places"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_12dp"
-                    android:text="@string/title_most_visited_places"
+                    android:text="@string/title_recommended_places"
                     android:textAppearance="@style/TextContent.Heading.Small"
                     app:layout_constraintTop_toBottomOf="@id/app_bar_home" />
 
@@ -44,11 +44,11 @@
                     android:paddingHorizontal="@dimen/margin_16dp"
                     android:paddingTop="@dimen/margin_12dp"
                     android:layout_marginTop="@dimen/margin_12dp"
-                    android:paddingBottom="@dimen/padding_12dp"
+                    android:paddingBottom="@dimen/padding_16dp"
                     android:scrollbars="none"
                     android:clipToPadding="false"
                     app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/tv_title_most_visited_places"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_recommended_places"
                     tools:listitem="@layout/item_carousel" />
 
                 <TextView
