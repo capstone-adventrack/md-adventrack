@@ -25,5 +25,6 @@ fun DocumentSnapshot.toPlaceModel()= PlaceModel(
     address = get("address") as String?,
     adultPrice = get("adult_price") as String?,
     childPrice = get("child_price") as String?,
+    city = get("city") as String?,
     activityTicket = emptyList()
 )

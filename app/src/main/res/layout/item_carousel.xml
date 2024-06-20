@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/elevation_8dp"
     android:layout_marginEnd="8dp"
     android:foreground="?attr/selectableItemBackground"
     app:shapeAppearance="?attr/shapeAppearanceCornerLarge">
@@ -31,9 +32,19 @@
         android:layout_marginBottom="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textAppearance="@style/TextContent.Heading.XLarge"
+        android:textAppearance="@style/TextContent.Heading.Large"
         android:textColor="@android:color/white"
         tools:text="Nusa Penida" />
+
+    <ImageView
+        android:id="@+id/iv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="67dp"
+        android:src="@drawable/ic_location"
+        android:layout_gravity="bottom|start"
+        app:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/tv_location"
@@ -41,13 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="18dp"
+        android:layout_marginStart="@dimen/margin_36dp"
         android:layout_marginBottom="@dimen/margin_64dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextContent.Heading.XXSmall"
         android:textColor="@android:color/white"
-        app:drawableStartCompat="@drawable/ic_location"
-        app:drawableTint="@color/white"
         tools:text="Bali" />
 
 </com.google.android.material.carousel.MaskableFrameLayout>

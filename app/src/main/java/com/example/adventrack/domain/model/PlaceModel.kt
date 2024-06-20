@@ -13,5 +13,6 @@ data class PlaceModel(
     val address: String? = null,
     val adultPrice: String? = null,
     val childPrice: String? = null,
+    val city: String? = null,
     val activityTicket: List<ActivityTicketModel> = emptyList(),
 )

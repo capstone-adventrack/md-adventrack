@@ -17,12 +17,9 @@ import com.example.adventrack.data.Result
 import com.example.adventrack.data.firebase.FirebaseClient
 import com.example.adventrack.data.remote.mapper.toFirstCity
 import com.example.adventrack.data.remote.mapper.toPlaceModel
-import com.example.adventrack.domain.model.ActivityTicketModel
 import com.example.adventrack.domain.model.LocationModel
 import com.example.adventrack.domain.model.PlaceModel
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
+import com.example.adventrack.domain.model.UserModel
 import kotlinx.coroutines.flow.update
 
 @HiltViewModel
@@ -35,9 +32,9 @@ class HomeViewModel @Inject constructor(
 
     private val _viewState = MutableStateFlow(HomeViewState())
     val viewState get() = _viewState.asStateFlow()
-
     init {
-        getNearbyPlacesByCity("Ubud")
+        getHighRatedPlaces()
+        getUserData()
     }
 
     fun processEvent(event: HomeViewEvent) {
@@ -47,7 +44,18 @@ class HomeViewModel @Inject constructor(
             }
 
             HomeViewEvent.GetPlaces -> {
-                getNearbyPlaces()
+                getHighRatedPlaces()
+            }
+
+            is HomeViewEvent.GetNearbyPlacesByCity -> {
+                getNearbyPlacesByCity(event.city)
+            }
+
+            HomeViewEvent.OnRefresh -> {
+                _viewState.value.location?.let { getLastLocation(it) }
+                getUserData()
+                getHighRatedPlaces()
+                getNearbyPlacesByCity(_viewState.value.locationModel?.name.orEmpty())
             }
         }
     }
@@ -75,14 +83,16 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getNearbyPlaces() {
+    private fun getHighRatedPlaces() {
         viewModelScope.launch {
             _viewEffect.emit(HomeViewEffect.OnLoading)
-            val response = firebaseClient.getNearbyPlaces()
+            val response = firebaseClient.getHighestRatedPlaces()
                 .addOnSuccessListener { result ->
                     val list = mutableListOf<PlaceModel>()
-                    result.documents.forEach {
+                    //Take only 5 places
+                    result.documents.take(3).forEach {
                         val data = it.toPlaceModel()
+                        Log.d("TAG", "getHighRatedPlaces: $data")
                         list.add(data)
                     }
                     _viewState.update {
@@ -92,7 +102,7 @@ class HomeViewModel @Inject constructor(
                 .addOnFailureListener { exception ->
                     Log.w("TAG", "Error getting documents.", exception)
                 }
-            if (response.isSuccessful) {
+            if (response.isComplete) {
                 _viewEffect.emit(HomeViewEffect.OnSuccess("Success"))
             } else {
                 _viewEffect.emit(HomeViewEffect.OnError("Error"))
@@ -111,17 +121,30 @@ class HomeViewModel @Inject constructor(
                         list.add(data)
                     }
                     _viewState.update {
-                        it.copy(places = list)
+                        it.copy(nearbyPlaces = list)
                     }
                 }
                 .addOnFailureListener { exception ->
                     Log.w("TAG", "Error getting documents.", exception)
                 }
-            if (response.isSuccessful) {
+            if (response.isComplete) {
                 _viewEffect.emit(HomeViewEffect.OnSuccess("Success"))
             } else {
                 _viewEffect.emit(HomeViewEffect.OnError("Error"))
             }
+        }
+    }
+
+    private fun getUserData(){
+        viewModelScope.launch {
+            _viewEffect.emit(HomeViewEffect.OnLoading)
+            val username = firebaseClient.getUsername()
+            val imageUrl = firebaseClient.getImageUrl()
+            val email = firebaseClient.getEmail()
+            _viewState.update {
+                it.copy(user = UserModel(name = username.orEmpty(), email = email.orEmpty(), imageUrl = imageUrl.toString()))
+            }
+            _viewEffect.emit(HomeViewEffect.OnSuccess("Success"))
         }
     }
 
