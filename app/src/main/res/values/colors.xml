@@ -6,6 +6,7 @@
     <color name="warning">#E71735</color>
     <color name="ligthGray">#F4F6F7</color>
     <color name="textColorSecondary">#5C707E</color>
+    <color name="primaryOrange">#FF9B25</color>
 
 <!--    Light-->
     <color name="light50">#f4f6f7</color>
