@@ -60,11 +60,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/margin_16dp"
                         android:layout_marginTop="@dimen/margin_12dp"
+                        android:maxLines="12"
                         android:ellipsize="end"
-                        android:maxLines="5"
                         android:textAppearance="@style/TextContent.Paragraph.Small"
                         app:layout_constraintTop_toBottomOf="@id/tv_title_place"
-                        tools:text="@tools:sample/lorem/random" />
+                        tools:text="@tools:sample/lorem" />
 
                     <ImageView
                         android:id="@+id/iv_rating"
@@ -192,6 +192,19 @@
                         app:cameraZoom="12"
                         app:liteMode="true"
                         tools:context=".features.detail.DetailActivity" />
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/cpi_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:visibility="gone"
+                        app:indicatorColor="#FFFF9B25"
+                        android:layout_marginTop="@dimen/margin_24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title_place"
+                        tools:visibility="visible" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
