@@ -12,6 +12,7 @@ class FirebaseClient @Inject constructor(
     fun getNearbyPlaces() = firestore.collection(COLLECTION_PLACES).get()
     fun getNearbyPlacesByCity(city: String) = firestore.collection(COLLECTION_PLACES).whereEqualTo("city", city).get()
     fun getHighestRatedPlaces() = firestore.collection(COLLECTION_PLACES).orderBy("rating").get()
+    fun getPlaceById(placeId: String) = firestore.collection(COLLECTION_PLACES).document(placeId).get()
 
     fun getUsername() = firebaseAuth.currentUser?.displayName
     fun getImageUrl() = firebaseAuth.currentUser?.photoUrl
