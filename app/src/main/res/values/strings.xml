@@ -55,4 +55,5 @@
     <string name="label_valid_duration">Valid for 7 days from the date of purchase</string>
     <string name="title_recommended_places">Recommended Places</string>
     <string name="this_is_an_app_logo">This is an app logo</string>
+    <string name="email">Email</string>
 </resources>

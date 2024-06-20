@@ -76,7 +76,7 @@
             style="@style/TextInputGlobal"
             android:textAppearance="@style/TextContent.Label.Small"
             android:textColorHint="@color/textColorSecondary"
-            android:hint="@string/username"/>
+            android:hint="@string/email"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
