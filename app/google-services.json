@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "577231665037",
+    "project_id": "adventrack-35d8e",
+    "storage_bucket": "adventrack-35d8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577231665037:android:d930b2b75bdbc7dca22fc4",
+        "android_client_info": {
+          "package_name": "com.example.adventrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577231665037-is60hiag8g5dfnbljm0052lset2rdujp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adventrack",
+            "certificate_hash": "f817192e468022f906b52dbf96f9c63dee4cde11"
+          }
+        },
+        {
+          "client_id": "577231665037-l22gt8nj96hqp8k6vqbk3ar89dil47pn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adventrack",
+            "certificate_hash": "9dd707d86e1fabd3f6f2dcc85c4fc04831a58b8b"
+          }
+        },
+        {
+          "client_id": "577231665037-uutgmpbfcqstrqaqhqmeb8qvd61kaas8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoUPYo0zzzL0UegFxSdlYwWECPsbDn7ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577231665037-uutgmpbfcqstrqaqhqmeb8qvd61kaas8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
