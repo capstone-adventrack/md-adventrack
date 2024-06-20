@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".features.home.HomeFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -55,9 +55,9 @@
                     android:layout_marginTop="@dimen/margin_12dp"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    android:text="@string/desc_nearby_places"
                     android:textAppearance="@style/TextContent.Paragraph.Small"
-                    app:layout_constraintTop_toBottomOf="@id/tv_title_nearby_places"
-                    tools:text="@tools:sample/lorem/random" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_nearby_places" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_nearby_places"
@@ -65,19 +65,20 @@
                     android:layout_height="0dp"
                     android:layout_marginHorizontal="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_24dp"
-                    tools:itemCount="5"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
                     app:layout_constraintTop_toBottomOf="@id/tv_description_nearby_places"
+                    tools:itemCount="5"
                     tools:listitem="@layout/item_nearby_place" />
 
                 <com.google.android.material.progressindicator.CircularProgressIndicator
                     android:id="@+id/cpi_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_84dp"
                     android:indeterminate="true"
                     android:visibility="gone"
                     app:indicatorColor="#FFFF9B25"
-                    android:layout_marginTop="@dimen/margin_84dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

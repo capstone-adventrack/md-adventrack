@@ -219,4 +219,5 @@
     <dimen name="height_102dp">102dp</dimen>
     <dimen name="width_90dp">90dp</dimen>
     <dimen name="height_220dp">220dp</dimen>
+    <dimen name="width_152dp">152dp</dimen>
 </resources>

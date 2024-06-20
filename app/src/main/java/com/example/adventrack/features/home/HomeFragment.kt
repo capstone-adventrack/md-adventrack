@@ -5,20 +5,26 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.hardware.display.DisplayManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adventrack.R
 import com.example.adventrack.databinding.FragmentHomeBinding
 import com.example.adventrack.domain.model.LocationModel
+import com.example.adventrack.features.home.adapter.PlaceAdapter
+import com.example.adventrack.utils.getScreenWidth
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +34,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+
     private val mViewModel by viewModels<HomeViewModel>()
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private val mPlaceAdapter : PlaceAdapter by lazy {
+        PlaceAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -51,7 +64,36 @@ class HomeFragment : Fragment() {
 
         setupObserver()
         setupCarousel()
+        setupAdapter()
         getMyLastLocation()
+    }
+
+    private fun setupAdapter() {
+        val screenWidth = getScreenWidth()
+        val screenDensity = resources.displayMetrics.density
+        val itemWidth = (170 * screenDensity).toInt()
+
+        binding.apply {
+            rvNearbyPlaces.layoutManager = GridLayoutManager(
+                root.context,
+                Integer.max(
+                    2,
+                    screenWidth / itemWidth
+                )
+            )
+            mPlaceAdapter.setOnItemClickListener(object : PlaceAdapter.OnItemClickListener {
+                override fun onItemClick(id: String) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Place ID: $id",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+
+            rvNearbyPlaces.adapter = mPlaceAdapter
+        }
+
     }
 
     private fun setupCarousel() {
@@ -63,6 +105,7 @@ class HomeFragment : Fragment() {
                 launch {
                     mViewModel.viewState.collectLatest {
                         setupLocationData(it.locationModel)
+                        mPlaceAdapter.submitList(it.places)
                     }
                 }
                 launch {
