@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.googleDaggerHilt)
     alias(libs.plugins.googleDevtoolsKsp)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -73,6 +74,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.firebase.auth)
+    implementation(libs.google.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -103,4 +106,9 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.dagger.compiler)
     ksp(libs.dagger.hilt.android.compiler)
+
+    //firebase
+    implementation(libs.play.services.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
 }
