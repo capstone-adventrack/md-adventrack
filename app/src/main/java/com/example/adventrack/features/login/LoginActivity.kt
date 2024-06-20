@@ -30,9 +30,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val mViewModel by viewModels<LoginViewModel>()
@@ -45,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+        Log.d("User", auth.currentUser.toString())
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -52,7 +55,9 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-
+        if (isUserLoggedIn()) {
+            navigateToHome()
+        }
         setupObserver()
         setupClickListeners()
     }
@@ -180,13 +185,17 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    val user: FirebaseUser? = auth.currentUser
+                    val user = auth.currentUser
                     updateUI(user)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     updateUI(null)
                 }
             }
+    }
+
+    private fun isUserLoggedIn(): Boolean {
+        return auth.currentUser != null
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {

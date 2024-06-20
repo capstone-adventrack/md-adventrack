@@ -3,6 +3,7 @@ package com.example.adventrack.data.remote.mapper
 import com.example.adventrack.data.remote.response.LocationResponse
 import com.example.adventrack.domain.model.ActivityTicketModel
 import com.example.adventrack.domain.model.LocationModel
+import com.example.adventrack.domain.model.OrderModel
 import com.example.adventrack.domain.model.PlaceModel
 import com.google.firebase.firestore.DocumentSnapshot
 
@@ -27,4 +28,16 @@ fun DocumentSnapshot.toPlaceModel()= PlaceModel(
     childPrice = get("child_price") as String?,
     city = get("city") as String?,
     activityTicket = emptyList()
+)
+
+fun OrderModel.toDocs(
+    userId: String
+) = mapOf(
+    id to "id",
+    name to "name",
+    place to "place",
+    price to "price",
+    date to "date",
+    quantity to "quantity",
+    userId to "user_id"
 )
