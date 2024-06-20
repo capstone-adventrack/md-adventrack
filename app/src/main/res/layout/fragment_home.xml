@@ -70,6 +70,20 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_description_nearby_places"
                     tools:listitem="@layout/item_nearby_place" />
 
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/cpi_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    app:indicatorColor="#FFFF9B25"
+                    android:layout_marginTop="@dimen/margin_84dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

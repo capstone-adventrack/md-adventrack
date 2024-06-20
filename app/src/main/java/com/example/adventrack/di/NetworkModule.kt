@@ -34,7 +34,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @Named("networkInterceptorLocation")
     fun provideNetworkInterceptorLocation(): OkHttpClient {
         val loggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -63,18 +62,16 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @Named("locationRetrofit")
-    fun provideNetworkClient(@Named("networkInterceptorLocation") okHttpClient: OkHttpClient): Retrofit =
+    fun provideNetworkClient(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BuildConfig.API_KEY_LOCATION)
+            .baseUrl(BuildConfig.BASE_URL_LOCATION)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
     @Provides
     @Singleton
-    @Named("locationApiService")
-    fun provideLocationService(@Named("locationRetrofit") retrofit: Retrofit): LocationService =
+    fun provideLocationService(retrofit: Retrofit): LocationService =
         retrofit.create(LocationService::class.java)
 
 }

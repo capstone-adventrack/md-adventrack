@@ -41,4 +41,6 @@
     <string name="label_0">0</string>
     <string name="label_activity_ticket">Activity Ticket</string>
     <string name="desc_error">Oops, your credentials are wrong, try again</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="format_location">%s, %s</string>
 </resources>

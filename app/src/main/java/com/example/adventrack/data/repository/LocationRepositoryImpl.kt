@@ -22,7 +22,7 @@ class LocationRepositoryImpl @Inject constructor(
             try {
                 val response = locationService.getCity(latitude, longitude)
                 if (response.isSuccessful) {
-                    emit(Result.Success(response.body() ?: LocationResponse()))
+                    emit(Result.Success(response.body()?.first() ?: LocationResponse()))
                 } else {
                     val errorBody = response.errorBody()
                     val apiError =
