@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/width_182dp"
+    app:cardElevation="0dp"
+    android:layout_width="@dimen/width_170dp"
     android:layout_height="@dimen/height_250dp"
     android:layout_marginBottom="@dimen/margin_16dp">
 
-    <TextView
-        android:id="@+id/tv_nearby_place_name"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_12dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/title_nearby_places"
-        android:textAppearance="@style/TextContent.SubHeading.Large"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_nearby_place"
-        tools:text="Ubud" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_nearby_place_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/title_nearby_places"
+            android:textAppearance="@style/TextContent.SubHeading.Large"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_nearby_place"
+            tools:text="Ubud" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_nearby_place"
-        android:layout_width="@dimen/width_182dp"
-        android:layout_height="@dimen/height_201dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/CornerLarge"
-        tools:srcCompat="@tools:sample/avatars" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_nearby_place"
+            android:layout_width="@dimen/width_170dp"
+            android:layout_height="@dimen/height_201dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CornerLarge"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_12dp"
-        android:background="@drawable/bg_button_blur"
-        android:padding="@dimen/padding_8dp"
-        android:src="@drawable/ic_heart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12dp"
+            android:background="@drawable/bg_button_blur"
+            android:padding="@dimen/padding_8dp"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
 

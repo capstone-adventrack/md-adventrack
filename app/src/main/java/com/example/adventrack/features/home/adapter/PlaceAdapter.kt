@@ -40,10 +40,10 @@ class PlaceAdapter : ListAdapter<PlaceModel, PlaceAdapter.MyViewHolder>(DIFF_CAL
             binding.apply {
                 tvNearbyPlaceName.text = item.name
                 Glide.with(itemView.context)
-                    .load(item.imageUrl)
+                    .load(item.imageUrl[0])
                     .into(ivNearbyPlace)
                 root.setOnClickListener {
-                    onItemClickListener.onItemClick(item.id)
+                    item.id?.let { it1 -> onItemClickListener.onItemClick(it1) }
                 }
             }
         }

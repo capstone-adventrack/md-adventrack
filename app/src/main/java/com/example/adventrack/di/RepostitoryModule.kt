@@ -1,8 +1,12 @@
 package com.example.adventrack.di
 
+import com.example.adventrack.data.firebase.FirebaseClient
 import com.example.adventrack.data.remote.network.LocationService
 import com.example.adventrack.data.repository.LocationRepositoryImpl
 import com.example.adventrack.domain.repository.LocationRepository
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +20,17 @@ object RepostitoryModule {
     @Singleton
     fun provideAppRepository(locationService: LocationService): LocationRepository {
         return LocationRepositoryImpl(locationService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseFirestore(): FirebaseFirestore {
+        return Firebase.firestore
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseClient(firestore: FirebaseFirestore): FirebaseClient {
+        return FirebaseClient(firestore)
     }
 }
