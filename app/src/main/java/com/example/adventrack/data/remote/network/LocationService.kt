@@ -11,4 +11,9 @@ interface LocationService {
         @Query("lat") page: Double?,
         @Query("lon") size: Double?,
     ): Response<LocationResponse>
+
+    @GET(NetworkConstant.CITY)
+    suspend fun getCities(
+        @Query("city") city: String?,
+    ): Response<LocationResponse>
 }
