@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.adventrack.databinding.ItemCarouselBinding
 import com.example.adventrack.databinding.ItemNearbyPlaceBinding
 import com.example.adventrack.domain.model.PlaceModel
 
-class PlaceAdapter : ListAdapter<PlaceModel, PlaceAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HighRatedPlaceAdapter : ListAdapter<PlaceModel, HighRatedPlaceAdapter.MyViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickListener: OnItemClickListener
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -17,7 +18,7 @@ class PlaceAdapter : ListAdapter<PlaceModel, PlaceAdapter.MyViewHolder>(DIFF_CAL
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ItemNearbyPlaceBinding.inflate(
+        val binding = ItemCarouselBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -34,14 +35,15 @@ class PlaceAdapter : ListAdapter<PlaceModel, PlaceAdapter.MyViewHolder>(DIFF_CAL
 
     }
 
-    class MyViewHolder(private val binding: ItemNearbyPlaceBinding) :
+    class MyViewHolder(private val binding: ItemCarouselBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PlaceModel, onItemClickListener: OnItemClickListener) {
             binding.apply {
-                tvNearbyPlaceName.text = item.name
+                tvHeadline.text = item.name
+                tvLocation.text = item.city
                 Glide.with(itemView.context)
                     .load(item.imageUrl[0])
-                    .into(ivNearbyPlace)
+                    .into(ivCarousel)
                 root.setOnClickListener {
                     item.id?.let { it1 -> onItemClickListener.onItemClick(it1) }
                 }

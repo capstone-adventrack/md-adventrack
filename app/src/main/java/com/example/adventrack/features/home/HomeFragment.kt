@@ -1,32 +1,36 @@
 package com.example.adventrack.features.home
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.hardware.display.DisplayManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.adventrack.R
 import com.example.adventrack.databinding.FragmentHomeBinding
 import com.example.adventrack.domain.model.LocationModel
-import com.example.adventrack.features.home.adapter.PlaceAdapter
+import com.example.adventrack.domain.model.UserModel
+import com.example.adventrack.features.detail.DetailActivity
+import com.example.adventrack.features.home.adapter.HighRatedPlaceAdapter
+import com.example.adventrack.features.home.adapter.NearbyPlaceAdapter
 import com.example.adventrack.utils.getScreenWidth
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.carousel.FullScreenCarouselStrategy
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -39,8 +43,12 @@ class HomeFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private val mPlaceAdapter : PlaceAdapter by lazy {
-        PlaceAdapter()
+    private val mNearbyPlaceAdapter : NearbyPlaceAdapter by lazy {
+        NearbyPlaceAdapter()
+    }
+
+    private val mHighRatedPlaceAdapter : HighRatedPlaceAdapter by lazy {
+        HighRatedPlaceAdapter()
     }
 
     override fun onCreateView(
@@ -63,9 +71,18 @@ class HomeFragment : Fragment() {
         )
 
         setupObserver()
-        setupCarousel()
         setupAdapter()
         getMyLastLocation()
+        setupSwipeListener()
+    }
+
+    private fun setupSwipeListener() {
+        binding.apply {
+            srlHome.setOnRefreshListener {
+                mViewModel.processEvent(HomeViewEvent.OnRefresh)
+                srlHome.isRefreshing = false
+            }
+        }
     }
 
     private fun setupAdapter() {
@@ -74,6 +91,7 @@ class HomeFragment : Fragment() {
         val itemWidth = (170 * screenDensity).toInt()
 
         binding.apply {
+            rvCarousel.layoutManager = CarouselLayoutManager(FullScreenCarouselStrategy())
             rvNearbyPlaces.layoutManager = GridLayoutManager(
                 root.context,
                 Integer.max(
@@ -81,22 +99,22 @@ class HomeFragment : Fragment() {
                     screenWidth / itemWidth
                 )
             )
-            mPlaceAdapter.setOnItemClickListener(object : PlaceAdapter.OnItemClickListener {
+
+            mHighRatedPlaceAdapter.setOnItemClickListener(object : HighRatedPlaceAdapter.OnItemClickListener {
                 override fun onItemClick(id: String) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Place ID: $id",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    navigateToDetail(id)
+                }
+            })
+            mNearbyPlaceAdapter.setOnItemClickListener(object : NearbyPlaceAdapter.OnItemClickListener {
+                override fun onItemClick(id: String) {
+                    navigateToDetail(id)
                 }
             })
 
-            rvNearbyPlaces.adapter = mPlaceAdapter
+            rvCarousel.adapter = mHighRatedPlaceAdapter
+            rvNearbyPlaces.adapter = mNearbyPlaceAdapter
         }
 
-    }
-
-    private fun setupCarousel() {
     }
 
     private fun setupObserver() {
@@ -105,7 +123,10 @@ class HomeFragment : Fragment() {
                 launch {
                     mViewModel.viewState.collectLatest {
                         setupLocationData(it.locationModel)
-                        mPlaceAdapter.submitList(it.places)
+                        setupNearbyPlaces(it.locationModel?.name)
+                        setupUserData(it.user)
+                        mHighRatedPlaceAdapter.submitList(it.places)
+                        mNearbyPlaceAdapter.submitList(it.nearbyPlaces)
                     }
                 }
                 launch {
@@ -114,6 +135,22 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setupUserData(userModel: UserModel?) {
+        binding.apply {
+            appBarHome.tvUserName.text = userModel?.name
+            Glide.with(this@HomeFragment)
+                .load(userModel?.imageUrl)
+                .circleCrop()
+                .into(appBarHome.sivProfile)
+        }
+    }
+
+    private fun setupNearbyPlaces(city: String?) {
+        if (city != null) {
+            mViewModel.processEvent(HomeViewEvent.GetNearbyPlacesByCity(city))
         }
     }
 
@@ -135,21 +172,14 @@ class HomeFragment : Fragment() {
 
     private fun observeEffect(effect: HomeViewEffect) {
         when (effect) {
-            is HomeViewEffect.OnLoading -> {
-                showLoading(true)
-                // showError(false)
-            }
-
-            is HomeViewEffect.OnSuccess -> {
-                showLoading(false)
-            }
-
             is HomeViewEffect.OnError -> {
                 showLoading(false)
-                Log.e(
-                    "HomeFragment",
-                    "observeEffect: ${effect.message}"
-                )
+            }
+            HomeViewEffect.OnLoading -> {
+                showLoading(true)
+            }
+            is HomeViewEffect.OnSuccess -> {
+                showLoading(false)
             }
         }
     }
@@ -208,6 +238,20 @@ class HomeFragment : Fragment() {
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 )
             )
+        }
+    }
+
+    private fun navigateToDetail(id: String) {
+        Intent(
+            requireContext(),
+            DetailActivity::class.java
+        ).apply {
+            putExtra(
+                DetailActivity.EXTRA_PLACE_ID,
+                id
+            )
+        }.also {
+            startActivity(it)
         }
     }
 }

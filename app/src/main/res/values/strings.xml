@@ -45,4 +45,5 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="format_location">%s, %s</string>
     <string name="desc_nearby_places">Discover mesmerising waterfalls, beautiful beaches, historical temples and other exciting sights.</string>
+    <string name="title_most_visited_places">Most Visited Places</string>
 </resources>

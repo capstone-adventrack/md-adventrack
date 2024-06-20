@@ -5,6 +5,8 @@ import com.example.adventrack.data.remote.network.LocationService
 import com.example.adventrack.data.repository.LocationRepositoryImpl
 import com.example.adventrack.domain.repository.LocationRepository
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import dagger.Module
@@ -30,7 +32,13 @@ object RepostitoryModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseClient(firestore: FirebaseFirestore): FirebaseClient {
-        return FirebaseClient(firestore)
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return Firebase.auth
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseClient(firestore: FirebaseFirestore,firebaseAuth: FirebaseAuth): FirebaseClient {
+        return FirebaseClient(firestore,firebaseAuth)
     }
 }
