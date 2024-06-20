@@ -16,4 +16,6 @@ class FirebaseClient @Inject constructor(
     fun getUsername() = firebaseAuth.currentUser?.displayName
     fun getImageUrl() = firebaseAuth.currentUser?.photoUrl
     fun getEmail() = firebaseAuth.currentUser?.email
+
+    fun logout() = firebaseAuth.signOut()
 }
