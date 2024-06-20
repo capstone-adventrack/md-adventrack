@@ -23,4 +23,8 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
     }
+
+    companion object {
+        const val EXTRA_PLACE_ID = "place_id"
+    }
 }
