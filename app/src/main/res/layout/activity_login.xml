@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:paddingHorizontal="@dimen/padding_16dp"
-    android:paddingVertical="@dimen/padding_116dp"
     tools:context=".features.login.LoginActivity">
 
     <ImageView
@@ -15,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_48dp"
+        android:layout_marginTop="@dimen/margin_110dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_logo" />

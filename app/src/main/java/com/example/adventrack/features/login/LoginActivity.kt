@@ -127,6 +127,15 @@ class LoginActivity : AppCompatActivity() {
                 showLoading(false)
                 showError(true)
             }
+
+            is LoginViewEffect.AuthError -> {
+                showLoading(false)
+                showError(true)
+            }
+
+            is LoginViewEffect.NavigateToHome -> {
+                navigateToHome()
+            }
         }
     }
 
@@ -192,6 +201,12 @@ class LoginActivity : AppCompatActivity() {
                     updateUI(null)
                 }
             }
+    }
+
+    private fun login() {
+        val username = binding.etUsername.text.toString()
+        val password = binding.etPassword.text.toString()
+        mViewModel.onEvent(LoginViewEvent.Login(username, password))
     }
 
     private fun isUserLoggedIn(): Boolean {
