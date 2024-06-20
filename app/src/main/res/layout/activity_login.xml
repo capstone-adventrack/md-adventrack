@@ -56,7 +56,7 @@
             style="@style/TextInputGlobal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/username"
+            android:hint="@string/email"
             android:textAppearance="@style/TextContent.Label.Small" />
 
     </com.google.android.material.textfield.TextInputLayout>
