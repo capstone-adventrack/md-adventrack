@@ -1,4 +1,4 @@
-package com.example.adventrack.domain
+package com.example.adventrack.domain.model
 
 data class PlaceModel(
     val id : String,

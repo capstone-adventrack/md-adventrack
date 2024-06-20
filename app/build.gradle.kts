@@ -26,6 +26,29 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField(
+                "String",
+                "BASE_URL_LOCATION",
+                "\"https://api.api-ninjas.com/v1/\""
+            )
+            buildConfigField(
+                "String",
+                "API_KEY_LOCATION",
+                "\"YJi6JY3zP2fyvXnriL9xuw==c0vYSnpsqv9i0WTE\""
+            )
+        }
+
+        debug {
+            buildConfigField(
+                "String",
+                "BASE_URL_LOCATION",
+                "\"https://api.api-ninjas.com/v1/\""
+            )
+            buildConfigField(
+                "String",
+                "API_KEY_LOCATION",
+                "\"YJi6JY3zP2fyvXnriL9xuw==c0vYSnpsqv9i0WTE\""
+            )
         }
     }
     compileOptions {
@@ -38,6 +61,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

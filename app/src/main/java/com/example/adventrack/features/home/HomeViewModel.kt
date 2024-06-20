@@ -3,9 +3,13 @@ package com.example.adventrack.features.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.adventrack.domain.PlaceModel
+import com.example.adventrack.domain.model.PlaceModel
+import com.example.adventrack.domain.repository.LocationRepository
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val LocationRepository: LocationRepository
+) : ViewModel() {
     private val _listPlaces = MutableLiveData<List<PlaceModel>>()
     val listPlaces: LiveData<List<PlaceModel>> = _listPlaces
 
