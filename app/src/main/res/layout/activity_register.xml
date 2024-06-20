@@ -5,18 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/padding_100dp"
-    android:paddingHorizontal="@dimen/padding_16dp"
     android:background="@color/white"
-    tools:context=".features.login.LoginActivity">
+    tools:context=".features.register.RegisterActivity">
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:contentDescription="This is an app logo"
+        android:contentDescription="@string/this_is_an_app_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_110dp"
+        android:layout_marginStart="@dimen/margin_16dp"
         app:srcCompat="@drawable/logo_adventrack"/>
 
     <TextView
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginStart="@dimen/margin_20dp"
         android:text="@string/register"
         style="@style/TextContent.Heading.Small"/>
 
@@ -37,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Please create an account "
+        android:layout_marginStart="@dimen/margin_20dp"
         style="@style/TextContent.Paragraph.Small"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
         android:background="@drawable/bg_edit_text"
         style="@style/TextInputGlobal">
         <EditText
@@ -63,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
         android:background="@drawable/bg_edit_text"
         style="@style/TextInputGlobal">
         <EditText
@@ -83,6 +87,7 @@
         app:passwordToggleDrawable="@drawable/ic_eye_open"
         app:passwordToggleEnabled="true"
         style="@style/TextInputGlobal"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="wrap_content">
         <EditText
@@ -102,6 +107,8 @@
         android:layout_marginTop="@dimen/margin_16dp"
         app:passwordToggleDrawable="@drawable/ic_eye_open"
         app:passwordToggleEnabled="true"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
+
         app:layout_constraintStart_toStartOf="parent"
         style="@style/TextInputGlobal"
         android:layout_height="wrap_content">
@@ -124,6 +131,7 @@
         android:layout_height="wrap_content"
         style="@style/ButtonGeneral.PrimaryVariant"
         android:text="@string/register"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
         android:textAppearance="@style/TextContent.SubHeading.Medium"/>
 
     <TextView
@@ -137,6 +145,19 @@
         android:layout_marginVertical="@dimen/margin_20dp"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:text="Already have an account?"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/cpi_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/primaryOrange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/tv_login"
