@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.adventrack.databinding.ItemNearbyPlaceBinding
-import com.example.adventrack.domain.PlaceModel
+import com.example.adventrack.domain.model.PlaceModel
 
 class PlaceAdapter : ListAdapter<PlaceModel, PlaceAdapter.MyViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickListener: OnItemClickListener
