@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.adventrack.R
 import com.example.adventrack.databinding.ActivityHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

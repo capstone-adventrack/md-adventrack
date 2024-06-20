@@ -4,12 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class LocationResponse(
 
-	@field:SerializedName("LocationResponse")
-	val locationResponse: List<LocationResponseItem?>? = null
-)
-
-data class LocationResponseItem(
-
 	@field:SerializedName("country")
 	val country: String? = null,
 

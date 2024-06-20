@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.googleDaggerHilt)
     alias(libs.plugins.googleDevtoolsKsp)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
 }
 
 android {
@@ -76,6 +77,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.firebase.auth)
     implementation(libs.google.googleid)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

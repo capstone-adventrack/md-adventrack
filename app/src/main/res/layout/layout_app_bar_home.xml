@@ -33,12 +33,14 @@
 
                 <TextView
                     android:id="@+id/tv_user_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12dp"
+                    android:layout_marginEnd="@dimen/margin_12dp"
                     android:text="@string/label_username"
                     android:textAppearance="@style/TextContent.SubHeading.Small"
                     app:layout_constraintBottom_toTopOf="@id/tv_greeting"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_location"
                     app:layout_constraintStart_toEndOf="@id/siv_profile"
                     app:layout_constraintTop_toTopOf="@id/siv_profile"
                     app:layout_constraintVertical_chainStyle="packed" />
@@ -72,7 +74,6 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_greeting"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_user_name" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
