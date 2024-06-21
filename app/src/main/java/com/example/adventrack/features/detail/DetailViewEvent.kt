@@ -7,4 +7,5 @@ sealed class DetailViewEvent {
     data class GetEntryTicketList(val listEntryTicket: List<EntryTicketModel>) : DetailViewEvent()
     data class OnAddEntryTicket(val type: String) : DetailViewEvent()
     data class OnMinusEntryTicket(val type: String) : DetailViewEvent()
+    data object OnRefresh : DetailViewEvent()
 }

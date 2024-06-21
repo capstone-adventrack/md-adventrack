@@ -10,4 +10,6 @@ data class EntryTicketModel(
     val price: String,
     val quantity: Int,
     val type: String,
+    val address : String,
+    val timestamp : String
 ) : Parcelable

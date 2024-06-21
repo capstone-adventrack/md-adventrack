@@ -3,6 +3,7 @@ package com.example.adventrack.features.detail
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ import com.example.adventrack.domain.model.EntryTicketModel
 import com.example.adventrack.domain.model.PlaceModel
 import com.example.adventrack.features.detail.adapter.DetailPlaceAdapter
 import com.example.adventrack.features.detail.adapter.EntryTicketAdapter
+import com.example.adventrack.features.home.HomeViewEvent
 import com.example.adventrack.features.transaction.TransactionActivity
 import com.example.adventrack.utils.withCurrencyFormat
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -73,6 +75,7 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
         getData()
         setupAdapter()
         setupClickListeners()
+        setupSwipeListener()
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -82,6 +85,15 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun setupClickListeners() {
         binding.apply {
             layoutCheckout.btnCheckout.setOnClickListener {
+                val listTicket = mViewModel.viewState.value.entryTicketList.filter { it.quantity > 0 }
+                if (listTicket.isEmpty()) {
+                    Toast.makeText(
+                        this@DetailActivity,
+                        getString(R.string.label_please_add_item_to_checkout),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
                 navigateToTransaction(
                     CheckoutModel(
                         mViewModel.viewState.value.entryTicketList,
@@ -112,7 +124,9 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
                         mViewModel.viewState.value.placeModel?.adultPrice
                     ),
                     0,
-                    "Adult"
+                    "Adult",
+                    mViewModel.viewState.value.placeModel?.address.orEmpty(),
+                    System.currentTimeMillis().toString()
                 ),
                 EntryTicketModel(
                     getString(
@@ -128,7 +142,9 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
                         mViewModel.viewState.value.placeModel?.childPrice
                     ),
                     0,
-                    "Child"
+                    "Child",
+                    mViewModel.viewState.value.placeModel?.address.orEmpty(),
+                    System.currentTimeMillis().toString()
                 )
             )
             mViewModel.processEvent(DetailViewEvent.GetEntryTicketList(entryTicket))
@@ -182,6 +198,15 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
                         observeEffect(it)
                     }
                 }
+            }
+        }
+    }
+
+    private fun setupSwipeListener() {
+        binding.apply {
+            srlDetail.setOnRefreshListener {
+                mViewModel.processEvent(DetailViewEvent.OnRefresh)
+                srlDetail.isRefreshing = false
             }
         }
     }
