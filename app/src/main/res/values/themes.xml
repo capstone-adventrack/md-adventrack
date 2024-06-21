@@ -6,10 +6,25 @@
         <item name="colorSecondary">@color/primaryOrange</item>
         <item name="colorSurface">@color/white</item>
         <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorControlActivated">@color/primaryOrange</item>
+        <item name="android:statusBarColor">@color/primaryOrange</item>
     </style>
 
     <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
         <item name="buttonTint">@color/primaryOrange</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">@color/black</item>
+    </style>
+
+    <style name="Theme.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/secondaryOrange</item>
     </style>
 
     <style name="Theme.Adventrack" parent="Base.Theme.Adventrack" />

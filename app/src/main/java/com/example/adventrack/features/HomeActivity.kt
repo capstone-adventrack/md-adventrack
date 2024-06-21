@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -37,5 +38,18 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         navView.setupWithNavController(navController)
+        setupStatusBar()
+    }
+
+    private fun setupStatusBar() {
+        val window = this.window ?: return // Safety check in case window is null
+        // Get the WindowInsetsController
+        WindowCompat.getInsetsController(
+            window,
+            window.decorView
+        ).let { controller ->
+            controller.isAppearanceLightStatusBars = true // Set status bar icons to dark
+            controller.show(WindowInsetsCompat.Type.systemBars())
+        }
     }
 }

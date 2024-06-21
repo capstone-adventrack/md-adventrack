@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -74,8 +76,20 @@ class HomeFragment : Fragment() {
         setupAdapter()
         getMyLastLocation()
         setupSwipeListener()
+        setupStatusBar()
     }
-
+    private fun setupStatusBar() {
+        val window = activity?.window ?: return // Safety check in case window is null
+        window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+        // Get the WindowInsetsController
+        WindowCompat.getInsetsController(
+            window,
+            window.decorView
+        ).let { controller ->
+            controller.isAppearanceLightStatusBars = true // Set status bar icons to dark
+            controller.show(WindowInsetsCompat.Type.systemBars())
+        }
+    }
     private fun setupSwipeListener() {
         binding.apply {
             srlHome.setOnRefreshListener {
