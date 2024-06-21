@@ -19,9 +19,7 @@ class OrderAdapter : ListAdapter<OrderModel, OrderAdapter.OrderViewHolder>(DIFF_
                 tvPrice.text = item.price.toString()
                 tvDate.text = item.date
                 tvQuantity.text = item.quantity.toString()
-                root.setOnClickListener {
-                    onItemClickListener.onItemClick(item.id)
-                }
+
             }
         }
     }

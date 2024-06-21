@@ -12,16 +12,6 @@ class OrderViewModel @Inject constructor(
     private val _viewEffect = MutableSharedFlow<OrderViewEffect>()
     val viewEffect get() = _viewEffect
 
-    private val _orderState = MutableStateFlow(
-        OrderModel(
-            id = 0,
-            name = "",
-            place = "",
-            quantity = 0,
-            price = 0.0,
-            date = "",
-        )
-    )
     fun order() {
         TODO("Not yet implemented")
     }

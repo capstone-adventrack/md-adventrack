@@ -73,6 +73,10 @@ class DetailViewModel @Inject constructor(
                         })
                 }
             }
+
+            DetailViewEvent.OnRefresh -> {
+                getPlaceById(_viewState.value.placeModel?.id.orEmpty())
+            }
         }
     }
 

@@ -47,8 +47,8 @@
     <string name="desc_nearby_places">Discover mesmerising waterfalls, beautiful beaches, historical temples and other exciting sights.</string>
     <string name="title_most_visited_places">Most Visited Places</string>
     <string name="format_time">%s - %s</string>
-    <string name="format_title_ticket_adult">%s Regular Ticket(Adult)</string>
-    <string name="format_title_ticket_child">%s Regular Ticket(Child)</string>
+    <string name="format_title_ticket_adult">%s Regular Ticket (Adult)</string>
+    <string name="format_title_ticket_child">%s Regular Ticket (Child)</string>
     <string name="format_desc_ticket">Entry ticket for %s</string>
     <string name="format_price_IDR">IDR %s</string>
     <string name="format_price_Rp">Rp %s</string>
@@ -58,4 +58,6 @@
     <string name="desc_empty_ticket">Oops, no tickets available for now!</string>
     <string name="this_is_an_app_logo">This is an app logo</string>
     <string name="email">Email</string>
+    <string name="label_transaction">Transaction</string>
+    <string name="label_please_add_item_to_checkout">Please add atleast one item to checkout</string>
 </resources>

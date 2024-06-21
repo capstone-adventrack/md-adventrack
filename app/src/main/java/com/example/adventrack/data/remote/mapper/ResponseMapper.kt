@@ -33,11 +33,11 @@ fun DocumentSnapshot.toPlaceModel()= PlaceModel(
 fun OrderModel.toDocs(
     userId: String
 ) = mapOf(
-    id to "id",
-    name to "name",
-    place to "place",
-    price to "price",
-    date to "date",
-    quantity to "quantity",
-    userId to "user_id"
+    "id" to id,
+    "name" to name,
+    "place" to place,
+    "price" to price,
+    "date" to date,
+    "quantity" to quantity,
+    "user_id" to userId
 )
