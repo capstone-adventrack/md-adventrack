@@ -35,7 +35,7 @@ fun DocumentSnapshot.toOrderModel() = OrderModel(
     name = get("name") as String?,
     place = get("place") as String?,
     price = get("price") as String?,
-    date = get("date") as String?,
+    timestamp = get("timestamp") as String?,
     quantity = getLong("quantity")?.toInt()
 )
 
@@ -46,7 +46,7 @@ fun OrderModel.toDocs(
     "name" to name,
     "place" to place,
     "price" to price,
-    "date" to date,
+    "timestamp" to timestamp,
     "quantity" to quantity,
     "user_id" to userId
 )

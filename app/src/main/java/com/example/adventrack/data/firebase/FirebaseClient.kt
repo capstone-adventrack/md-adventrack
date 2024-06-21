@@ -27,6 +27,5 @@ class FirebaseClient @Inject constructor(
     fun addOrder(order: OrderModel) = firestore.collection(COLLECTION_ORDERS).add(order.toDocs(
         firebaseAuth.currentUser?.uid.orEmpty()
     ))
-
     fun getOrdersByUserId() = firestore.collection(COLLECTION_ORDERS).whereEqualTo("user_id", firebaseAuth.currentUser?.uid).get()
 }
