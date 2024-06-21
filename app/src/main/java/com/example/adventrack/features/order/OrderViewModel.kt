@@ -29,7 +29,7 @@ class OrderViewModel @Inject constructor(
         getOrdersByUserId()
     }
 
-    private fun getOrdersByUserId() {
+    fun getOrdersByUserId() {
         viewModelScope.launch {
             _viewState.update { it.copy(isLoading = true) }
             firebaseClient.getOrdersByUserId()

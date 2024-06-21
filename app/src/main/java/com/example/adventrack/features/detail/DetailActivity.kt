@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -76,10 +77,23 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
         setupAdapter()
         setupClickListeners()
         setupSwipeListener()
+        setupStatusBar()
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    private fun setupStatusBar() {
+        val window = this.window ?: return // Safety check in case window is null
+        // Get the WindowInsetsController
+        WindowCompat.getInsetsController(
+            window,
+            window.decorView
+        ).let { controller ->
+            controller.isAppearanceLightStatusBars = true // Set status bar icons to dark
+            controller.show(WindowInsetsCompat.Type.systemBars())
+        }
     }
 
     private fun setupClickListeners() {

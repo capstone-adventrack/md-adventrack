@@ -46,6 +46,14 @@ class OrderFragment : Fragment() {
 
         setupObserver()
         setupAdapter()
+        setupSwipeRefresh()
+    }
+
+    private fun setupSwipeRefresh() {
+        binding.srlOrder.setOnRefreshListener {
+            mViewModel.getOrdersByUserId()
+            binding.srlOrder.isRefreshing = false
+        }
     }
 
     private fun setupAdapter() {

@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -54,6 +56,20 @@ class TransactionActivity : AppCompatActivity() {
         setupToolbar()
         setupSwipeListener()
         setupClickListener()
+        setupStatusBar()
+    }
+
+    private fun setupStatusBar() {
+        val window = this.window ?: return // Safety check in case window is null
+        // Get the WindowInsetsController
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        WindowCompat.getInsetsController(
+            window,
+            window.decorView
+        ).let { controller ->
+            controller.isAppearanceLightStatusBars = true // Set status bar icons to dark
+            controller.show(WindowInsetsCompat.Type.systemBars())
+        }
     }
 
     private fun setupClickListener() {
