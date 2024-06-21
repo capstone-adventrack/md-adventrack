@@ -2,10 +2,10 @@ package com.example.adventrack.domain.model
 
 
 data class OrderModel (
-    val id: String?,
-    val name: String,
-    val place: String,
-    val price: String,
-    val date: String,
-    val quantity: Int,
+    val id: String? = null,
+    val name: String?= null,
+    val place: String?= null,
+    val price: String?= null,
+    val date: String?= null,
+    val quantity: Int? = null,
 )
