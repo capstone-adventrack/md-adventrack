@@ -43,7 +43,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         style="@style/TextInputGlobal"
-
         android:layout_marginHorizontal="@dimen/margin_16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

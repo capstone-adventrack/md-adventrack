@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.googleDaggerHilt)
     alias(libs.plugins.googleDevtoolsKsp)
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-parcelize")
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin)
 }
 

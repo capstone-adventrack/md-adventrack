@@ -1,5 +1,6 @@
 package com.example.adventrack.data.firebase
 
+import com.example.adventrack.data.firebase.FirebaseConstant.COLLECTION_ORDERS
 import com.example.adventrack.data.firebase.FirebaseConstant.COLLECTION_PLACES
 import com.example.adventrack.data.remote.mapper.toDocs
 import com.example.adventrack.domain.model.OrderModel
@@ -23,9 +24,9 @@ class FirebaseClient @Inject constructor(
 
     fun logout() = firebaseAuth.signOut()
 
-    fun addOrder(order: OrderModel) = firestore.collection("orders").add(order.toDocs(
+    fun addOrder(order: OrderModel) = firestore.collection(COLLECTION_ORDERS).add(order.toDocs(
         firebaseAuth.currentUser?.uid.orEmpty()
     ))
 
-    fun getOrdersByUserId() = firestore.collection("orders").whereEqualTo("user_id", firebaseAuth.currentUser?.uid).get()
+    fun getOrdersByUserId() = firestore.collection(COLLECTION_ORDERS).whereEqualTo("user_id", firebaseAuth.currentUser?.uid).get()
 }

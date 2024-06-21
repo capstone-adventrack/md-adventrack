@@ -1,24 +1,19 @@
-package com.example.adventrack.features.detail.adapter
+package com.example.adventrack.features.transaction.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.adventrack.databinding.ItemEntryTicketBinding
+import com.example.adventrack.databinding.ItemTicketPurchasedBinding
 import com.example.adventrack.domain.model.EntryTicketModel
+import com.example.adventrack.utils.convertMillisToDateString
 
-class EntryTicketAdapter :
-    ListAdapter<EntryTicketModel, EntryTicketAdapter.MyViewHolder>(DIFF_CALLBACK) {
-    private lateinit var onItemClickListener: OnItemClickListener
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.onItemClickListener = listener
-    }
+class PurchasedTicketAdapter :
+    ListAdapter<EntryTicketModel, PurchasedTicketAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ItemEntryTicketBinding.inflate(
+        val binding = ItemTicketPurchasedBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -30,28 +25,22 @@ class EntryTicketAdapter :
         val item = getItem(position)
         holder.bind(
             item,
-            onItemClickListener
         )
-
     }
 
-    class MyViewHolder(private val binding: ItemEntryTicketBinding) :
+    class MyViewHolder(private val binding: ItemTicketPurchasedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: EntryTicketModel, onItemClickListener: OnItemClickListener) {
+        fun bind(item: EntryTicketModel) {
             binding.apply {
                 tvPrice.text = item.price
-                if (item.price == "IDR 0"){
+                if (item.price == "IDR 0") {
                     tvPrice.text = "Free Entry"
                 }
+                tvDate.text = item.timestamp.toLong().convertMillisToDateString()
                 tvTitle.text = item.name
-                tvDesc.text = item.description
-                ibPlusItem.setOnClickListener {
-                    onItemClickListener.onAddItemClick(item.type)
-                }
-                ibMinusItem.setOnClickListener {
-                    onItemClickListener.onMinusItemClick(item.type)
-                }
-                tvQuantity.text = item.quantity.toString()
+                tvLocation.text = item.address
+                tvQuantity.text =
+                    if (item.quantity == 1) "${item.quantity} Ticket" else "${item.quantity} Tickets"
             }
         }
     }
@@ -72,10 +61,5 @@ class EntryTicketAdapter :
                 return oldItem.name == newItem.name
             }
         }
-    }
-
-    interface OnItemClickListener {
-        fun onAddItemClick(type : String)
-        fun onMinusItemClick(type: String)
     }
 }
