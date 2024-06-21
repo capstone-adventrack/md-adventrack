@@ -6,6 +6,6 @@ data class OrderModel (
     val name: String?= null,
     val place: String?= null,
     val price: String?= null,
-    val date: String?= null,
+    val timestamp: String?= null,
     val quantity: Int? = null,
 )

@@ -10,7 +10,9 @@ import com.example.adventrack.databinding.ItemOrderBinding
 import com.example.adventrack.databinding.ItemTicketPurchasedBinding
 import com.example.adventrack.domain.model.OrderModel
 import com.example.adventrack.features.transaction.adapter.PurchasedTicketAdapter
+import com.example.adventrack.utils.convertMillisToDateString
 import com.example.adventrack.utils.stringIDRToInteger
+import com.example.adventrack.utils.withCurrencyFormat
 
 class OrderAdapter : ListAdapter<OrderModel, OrderAdapter.OrderViewHolder>(DIFF_UTIL){
 
@@ -20,8 +22,8 @@ class OrderAdapter : ListAdapter<OrderModel, OrderAdapter.OrderViewHolder>(DIFF_
             binding.apply {
                 tvTitle.text = item.name
                 tvLocation.text = item.place
-                tvPrice.text = stringIDRToInteger(item.price ?: "0").toString()
-                tvDate.text = item.date
+                tvPrice.text = stringIDRToInteger(item.price ?: "0").toString().withCurrencyFormat()
+                tvDate.text = item.timestamp?.toLong()?.convertMillisToDateString()
                 tvQuantity.text = item.quantity.toString()
                 tvStatus.text = "PAID"
             }

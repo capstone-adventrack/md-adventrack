@@ -40,6 +40,8 @@ class OrderViewModel @Inject constructor(
                             val data = it.toOrderModel()
                             list.add(data)
                         }
+                        // desc order by timestamp
+                        list.sortByDescending { it.timestamp }
                         delay(1000)
                         _viewState.update {
                             it.copy(

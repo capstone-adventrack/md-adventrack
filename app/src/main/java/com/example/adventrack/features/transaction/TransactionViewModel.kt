@@ -56,7 +56,7 @@ class TransactionViewModel @Inject constructor(
                         name = it.name,
                         place = it.address,
                         price = it.price,
-                        date = it.timestamp.toLong().convertMillisToDateString(),
+                        timestamp  = it.timestamp,
                         quantity = it.quantity,
                     )
                     firebaseClient.addOrder(order)
