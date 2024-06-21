@@ -1,10 +1,12 @@
 package com.example.adventrack.features.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
@@ -13,11 +15,18 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adventrack.R
 import com.example.adventrack.databinding.ActivityDetailBinding
+import com.example.adventrack.domain.model.CheckoutModel
 import com.example.adventrack.domain.model.EntryTicketModel
 import com.example.adventrack.domain.model.PlaceModel
 import com.example.adventrack.features.detail.adapter.DetailPlaceAdapter
 import com.example.adventrack.features.detail.adapter.EntryTicketAdapter
+import com.example.adventrack.features.transaction.TransactionActivity
 import com.example.adventrack.utils.withCurrencyFormat
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.HeroCarouselStrategy
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,8 +34,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityDetailBinding
+
+    private lateinit var mMap: GoogleMap
 
     private val placeId by lazy {
         intent.getStringExtra(EXTRA_PLACE_ID) ?: ""
@@ -61,6 +72,24 @@ class DetailActivity : AppCompatActivity() {
         setupObservers()
         getData()
         setupAdapter()
+        setupClickListeners()
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    private fun setupClickListeners() {
+        binding.apply {
+            layoutCheckout.btnCheckout.setOnClickListener {
+                navigateToTransaction(
+                    CheckoutModel(
+                        mViewModel.viewState.value.entryTicketList,
+                        mViewModel.viewState.value.totalPrice
+                    )
+                )
+            }
+        }
     }
 
     private fun setupEntryTicket(entryTicketList: List<EntryTicketModel>) {
@@ -174,6 +203,7 @@ class DetailActivity : AppCompatActivity() {
                 placeModel?.openTime,
                 placeModel?.closeTime
             )
+            showEmptyTicket(placeModel?.activityTicket.isNullOrEmpty())
         }
     }
 
@@ -197,6 +227,18 @@ class DetailActivity : AppCompatActivity() {
         binding.cpiDetail.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
+    private fun showEmptyTicket(isEmpty: Boolean) {
+        binding.apply {
+            layoutEmptyTicket.root.visibility = if (isEmpty) View.VISIBLE else View.GONE
+            rvActivityTicket.visibility = if (isEmpty) View.GONE else View.VISIBLE
+            if (isEmpty) {
+                val params = tvTitleLocation.layoutParams as ConstraintLayout.LayoutParams
+                params.topToBottom = layoutEmptyTicket.root.id
+                tvTitleLocation.layoutParams = params
+            }
+        }
+    }
+
     private fun setupToolbar() {
         binding.apply {
             appBarDetail.btnBack.setOnClickListener {
@@ -205,8 +247,52 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mViewModel.viewState.collectLatest { viewState ->
+                    val placeModel = viewState.placeModel
+                    if (placeModel != null) {
+                        // Place model is available, add the marker
+                        val location = com.google.android.gms.maps.model.LatLng(
+                            placeModel.latitude ?: 0.0,
+                            placeModel.longitude ?: 0.0
+                        )
+
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .position(location)
+                                .title(placeModel.name)
+                        )
+
+                        mMap.moveCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                location,
+                                15f
+                            )
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    private fun navigateToTransaction(checkoutModel: CheckoutModel) {
+        val intent = Intent(
+            this,
+            TransactionActivity::class.java
+        )
+        intent.putExtra(
+            TransactionActivity.EXTRA_CHECKOUT,
+            checkoutModel
+        )
+        startActivity(intent)
+    }
 
     companion object {
         const val EXTRA_PLACE_ID = "place_id"
     }
+
 }
