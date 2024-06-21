@@ -24,7 +24,7 @@
     </style>
 
     <style name="Theme.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/secondaryOrange</item>
+        <item name="android:color">#33FFC785</item>
     </style>
 
     <style name="Theme.Adventrack" parent="Base.Theme.Adventrack" />
