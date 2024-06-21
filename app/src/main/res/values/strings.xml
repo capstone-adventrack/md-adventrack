@@ -56,4 +56,5 @@
     <string name="title_recommended_places">Recommended Places</string>
     <string name="this_is_an_app_logo">This is an app logo</string>
     <string name="email">Email</string>
+    <string name="log_in_with_google">Log in with Google</string>
 </resources>
