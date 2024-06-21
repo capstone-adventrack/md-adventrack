@@ -58,4 +58,7 @@
     <string name="email">Email</string>
     <string name="label_transaction">Transaction</string>
     <string name="label_please_add_item_to_checkout">Please add atleast one item to checkout</string>
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="desc_empty_ticket">Oops, no tickets available for now!</string>
+    <string name="label_checkout">Chekout</string>
 </resources>
