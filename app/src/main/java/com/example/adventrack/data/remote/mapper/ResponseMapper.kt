@@ -30,6 +30,15 @@ fun DocumentSnapshot.toPlaceModel()= PlaceModel(
     activityTicket = emptyList()
 )
 
+fun DocumentSnapshot.toOrderModel() = OrderModel(
+    id = getString("id"),
+    name = get("name") as String?,
+    place = get("place") as String?,
+    price = get("price") as String?,
+    date = get("date") as String?,
+    quantity = getLong("quantity")?.toInt()
+)
+
 fun OrderModel.toDocs(
     userId: String
 ) = mapOf(

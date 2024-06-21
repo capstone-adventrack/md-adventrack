@@ -26,7 +26,6 @@ class PurchasedTicketAdapter :
         holder.bind(
             item,
         )
-
     }
 
     class MyViewHolder(private val binding: ItemTicketPurchasedBinding) :
@@ -40,7 +39,8 @@ class PurchasedTicketAdapter :
                 tvDate.text = item.timestamp.toLong().convertMillisToDateString()
                 tvTitle.text = item.name
                 tvLocation.text = item.address
-                tvQuantity.text = if(item.quantity == 1) "${item.quantity} Ticket" else "${item.quantity} Tickets"
+                tvQuantity.text =
+                    if (item.quantity == 1) "${item.quantity} Ticket" else "${item.quantity} Tickets"
             }
         }
     }
