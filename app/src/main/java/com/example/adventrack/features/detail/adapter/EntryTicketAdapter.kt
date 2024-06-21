@@ -40,6 +40,9 @@ class EntryTicketAdapter :
         fun bind(item: EntryTicketModel, onItemClickListener: OnItemClickListener) {
             binding.apply {
                 tvPrice.text = item.price
+                if (item.price == "IDR 0"){
+                    tvPrice.text = "Free Entry"
+                }
                 tvTitle.text = item.name
                 tvDesc.text = item.description
                 ibPlusItem.setOnClickListener {
