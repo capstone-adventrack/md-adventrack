@@ -2,7 +2,10 @@
 ## Overview
 In this era of technology, we introduce solutions to support the growth of Indonesia's tourism sector. Our app, Adventrack, aims to assist travelers in planning their best trip by providing a recommendation system and essential information. We have observed travelers' experiences and the growing trends in the tourism industry. As such, our app is designed to integrate digital innovation to improve Indonesia's economy through more effective tourism promotion.
 
-Adventrack is an innovative application designed to provide information about tourist destinations. This application utilizes the latest technology to provide the best experience for tourists in planning their trip. With Adventrack, users can find information about tourist attractions. The main purpose of Adventrack is to make it easier for tourists to access the information needed during the trip. This application is expected to be a reliable digital guide and help users plan a pleasant trip.
+Adventrack is an innovative application designed to provide information about tourist destinations. This application utilizes the latest technology to provide the best experience for tourists in planning their trip. With Adventrack, users can find information about tourist attractions. The main purpose of Adventrack is to make it easier for tourists to access the information needed during the trip. This application is expected to be a reliable digital guide and help users plan a pleasant trip. [Application Demo](https://drive.google.com/file/d/1LbIZmr3G8GRSwBOJBdhWYMTYU3sO0Uy0/view?usp=sharing)
+
+![image](https://github.com/user-attachments/assets/6557cd23-6f73-4bc8-9751-366b2696d0f1)
+
 
 ## Features
 - **Tourist Destination Information**: Discover comprehensive details about various tourist spots.
